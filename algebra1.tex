@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+
+
+
+\usepackage[all]{xy}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+\pagestyle{fancyplain}
+
+\begin{document}
+
+\lhead{Frederick Robinson}
+\rhead{Math 470: Algebra}
+
+
+
+\title{Homework 1}
+\author{Frederick Robinson}
+\date{16 October 2010}
+\maketitle
+
+
+
+
+\section{Question 1}
+\subsection{Question}
+Let $H_1, \dots, H_r$ be normal subgroups of a finite group $G$ such that for all $i \neq j$, the order of $H_i$ is prime to the order of $H_j$. Prove that
+\[H_1 \times \cdots \times H_r \cong H_1 \cdots H_r .\]
+Deduce that if all the Sylow subgroups of $G$ are normal, then $G$ is the direct product of its Sylow subgroups.
+\subsection{Answer}
+\begin{proof}If $H,K$ are normal subgroups of $G$ with relatively prime order then they have $H \cap K = \{ e \}$, by order considerations since $H \cap K$ is a subgroup.  Moreover, $h_1k_1 = h_2 k_2 \Rightarrow h_1=h_2, k_1=k_2$ since $h_1=h_2k_2 k_1^{-1} \Rightarrow k_2 k_1^{-1} \in G $. Thus, the natural homomorphism $\varphi: H \times K \to  H K$  defined by $\varphi(h,k)=hk$ is injective. It is an isomorphism since it is surjective by construction.
+
+Since the product of two normal subgroups is also normal, the proposition follows by induction.
+\end{proof}
+
+Since, if they are normal, the Sylow subgroups of $G$ satisfy the appropriate conditions we can conclude that their product is equal to their direct product. Moreover, by order considerations any member of $G$ can be written as a product of elements from the Sylow subgroups.
+
+
+
+\section{Question 2}
+\subsection{Question}
+Let $p,q$ be distinct primes. Prove that a group of order $p^2q$ is solvable, and necessarily has a normal Sylow subgroup.
+\subsection{Answer}
+\begin{proof}
+Denote by $n_p, n_q$ the number of Sylow $p$-subgroups and $q$-subgroups. Assume towards a contradiction that neither Sylow subgroup is normal i.e., that neither $n_q$ nor $n_p$ is 1. By Sylow Theorem 3, $n_p | q$ and $n_p \equiv 1 (\mathrm{mod\ } p)$. Therefore $p<q$. The same Sylow theorem gives us $n_q | p$ and $n_q \equiv 1 (\mathrm{mod\ } q)$. So, in particular, $q<n_q$. Taking these together we have $p<n_q$, and consequently $n_q=p^2$.
+
+Note though that $q$ being prime there are $n_q (q-1)$ elements of order $q$. Therefore, the number of elements whose order divides $p^2$ is $pq^2-n_q(q-1)=p^2$ and $n_p=1$ a contradiction.
+
+Since one of the Sylow subgroups is normal, our group is solvable. In particular it has normal series $e \lhd X \lhd G $ for $G$ the entire group and $X$ whichever Sylow subgroup is normal. $X$ and $ G/ X $ are both solvable, being $p$-groups, so all of $G$ is solvable.
+\end{proof}
+
+\section{Question 3}
+\subsection{Question}
+Let $G=\left< x,y | x^4=1, x^2=y^2, yxy^{-1}=x^{-1}\right>$. Show that $G\cong Q_8$, the group of unit quaternions $\{\pm1, \pm i, \pm j, \pm k\}$.
+\subsection{Answer}
+It is easy to check that $Q_8$ satisfies these relations. 
+\[  x^2=y^2=(xy)^2=-1 ,\quad x^4=y^4=(xy)^4=1\]
+\[x = i , \quad   x^{-1}=x^3=-i \]
+\[y = j, \quad y^{-1}=y^3=-j\]
+\[xy = k, \quad y^{-1}x^{-1}=(xy)^3=-k\]
+And that the expressions are closed under inverse, product modulo reduction.
+
+
+
+
+\section{Question 4}
+\subsection{Question}
+Let $k$ be a field and and let $B$ be the subgroup of $GL_n(k)$ consisting of upper triangular matrices. Show that $B$ is solvable.
+\subsection{Answer}
+
+The following proof follows the one outlined in on Lang page 19.
+
+\begin{proof}
+Denote by $N^r$ the set of all $n \times n$ matrices with entries in $k$ and all entries $N^r_{ij}=0$ for $j<i+r$. Let $U_i=N^i+I$, and let $D$ be the set of diagonal $n \times n$ matrices.
+
+The map $\varphi: B \to D$ defined by sending an upper triangular matrix to the diagonal matrix with the same diagonal components is a surjective homomorphism with kernel $U_1$ and abelian image.
+
+Furthermore, each $U_{i+1}$ is normal in $U_{i}$ and the quotient group has $U_i / U_{i+1} \cong k^{n-i}$ via the map that sends $I+M$ to the $r$-th upper diagonal. 
+
+
+So 
+\[B \supset U_1\supset U_2 \supset \cdots \supset U_n = I\]
+is an abelian tower and $B$ is solvable, as claimed.
+\end{proof}
+\section{Question 5}
+\subsection{Question}
+Let $p$ be prime and let $U$ be the subgroup of $GL_3(\mathbb{F}_p)$ consisting of upper-triangular matrices with diagonal elements equal to 1, so that $|U|=p^3$. Find a subgroup $H \leq U$ and a normal subgroup $N \lhd U$ such that $U = N \rtimes H$, and explicitly describe the homomorphisms $ H \to \mathrm{Aut}(N)$.
+\subsection{Answer}
+We can let 
+\[ N = \left( \begin{array}{ccc} 1& 0& x \\ 0&1&y \\ 0&0&1 \end{array} \right)  H = \left( \begin{array}{ccc} 1& z& 0 \\ 0&1&0 \\ 0&0&1 \end{array} \right)\]
+The generators of $H$ act by sending $(x,y) \mapsto (x,x+y) \in N$.
+
+
+\section{Question 6}
+\subsection{Question}
+For each set $S$, let $S \to F(S)$ denote a free group on $S$. 
+\begin{enumerate}
+\item Show that there is a functor from sets to groups which sends $S$ to $F(S)$. 
+\item Show that for any group $G$ there is a bijection
+\[\alpha_{S,G}: \mathrm{Hom}(F(S),G) \to^{\sim} \mathrm{Maps}(S,G).\]
+Show that this bijection is \emph{natural}, by demonstrating that for each set map $S' \to S$ and each group homomorphism $G \to G'$ there is a mommutative square involving $\alpha_{S,G}$ and $\alpha_{S',G'}$.
+\end{enumerate}
+\subsection{Answer}
+\begin{enumerate}
+\item The functor is just given by sending $S$ to $F(S) = *_{x \in S} \mathbb{Z}$. Set maps are sent to group homomorphisms by sending the generators of the free group to the generators of the other free group in the way defined by the set map. In particular if $f \in Maps(S,T)$ has $f(x)=y$ define $F(f)$ to be the unique homomorphism which sends $e_x \mapsto e_y \forall x,y$.
+
+Clearly, this is a functor, since $F(id_S)$ just sends the generators of the corresponding group homomorphism to themselves and is therefore the identity. Finally, we verify that $F(f \circ g) = F(f) \circ F(g)$ as desired.  
+\item A map $\phi: F(S) \to G$ is defined by where it sends the identity in each of its component groups. Define $\alpha(\phi)$ by sending a point $x$ in $S$ to the element of $G$ where $\phi$ sends the identity in one of the component groups $G_x$ of $F(S)$.
+
+This is a bijection since maps from $F(S)$ are uniquely defined by how they treat the identity of each of their component groups. The following diagram commutes for $f:S \to S'$ a set map and $\phi: G \to G'$ a group homomorphism.
+\[\xymatrix{
+Hom(F(S),G) \ar[d]_{(f,\phi)} \ar[r]^{\alpha_{S,G}} & Maps(S,G)  \ar[d]_{(f,\phi)} \\
+Hom(F(S'),G') \ar[r]^{\alpha_{S',G'}}& Maps(S',G')}\]
+
+
+\end{enumerate}
+
+\section{Question 7}
+\subsection{Question}
+Recall that in a free product $*_{\alpha\in I}G_\alpha$ ($I$ some set), each element can be uniquely expressed as reduced word $g_1g_2\dots g_n$, where $g_i \in G_\alpha-\{1\}$ with $\alpha_i \in I$ and $\alpha_i \neq \alpha_{i+1}$ for all $i$. We say that sucha  reduced word is \emph{cyclically reduced} if moreover $\alpha_1\neq \alpha_n$.
+\begin{enumerate}
+\item Show that every element of $*_{\alpha \in I}G_\alpha$ is conjugate either to a cyclically reduced word or to an element of $G_\alpha$ for some $\alpha$.
+\item Deduce that any element of finite order in $*_{\alpha \in I}G_\alpha$ is conjugate to an element of $G_\alpha$ for some $\alpha$.
+\end{enumerate}
+\subsection{Answer}
+\begin{enumerate}
+\item We can assume WLOG that our element $X \in *_{\alpha \in I}G_\alpha$ is reduced. Given a reduced word it is either cyclically reduced, or not. If it is, then we have a conjugate of $X$ which is cyclically reduced. If not, then we may conjugate by the inverse of the leftmost letter. Since the rightmost letter belongs to the same group $G_\alpha$ we have reduced the length of the word. Since we cannot reduce the length of a finite string indefinitely, repeated application of this process must result in a cyclically reduced word.
+\item Recall that a conjugate of a member of a group has the same order as the original member. So, fix some element $X \in *_{\alpha \in I}G_\alpha$. By the previous part it has a conjugate say $Y$ which is either cyclically reduced, or belongs to some $G_\alpha$. In the former case, it is clear that this element is of nonfinite order, since the product $Y^n$ has $n\cdot m$ letters where $Y$ has $m$ letters (by induction, since $Y$ is cyclically reduced). 
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+
+
+
+\usepackage[all]{xy}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+\pagestyle{fancyplain}
+
+\begin{document}
+
+\lhead{Frederick Robinson}
+\rhead{Math 470: Algebra}
+
+
+
+\title{Homework 2}
+\author{Frederick Robinson}
+\date{8 November 2010}
+\maketitle
+
+
+
+
+\section{Question 1}
+\subsection{Question}
+Suppose that $\alpha$ is algebraic over a field $k$. Describe how to compute $1/\alpha$ as an element of $k[\alpha]$ (i.e. as a polynomial in $\alpha$ with coefficients in $k$), and illustrate this by computing $(1+\sqrt 2 + \sqrt 3)^{-1}$.
+\subsection{Answer}
+Observe that if $\alpha$ is a root of the irreducible polynomial
+\[p(x) = p_n x^n + p_{n-1} x^{n-1}+ \cdots +p_1 x +p_0\]
+we can compute $\alpha^{-1}$ from
+\[\alpha (p_n \alpha^{n-1} + p_{n-1}\alpha^{n-2}+ \cdots + p_1) = -p_0\]
+namely
+\[\alpha^{-1} = \frac{-1}{p_0} (p_n \alpha^{n-1} + p_{n-1}\alpha^{n-2}+ \cdots + p_1). \]
+Since $p(x)$ is irreducible $p_0 \neq 0$. (Dummit and Foote p.516)
+
+It is easy to verify that  $\alpha = 1+\sqrt 2 + \sqrt 3$ is a root of the irreducible polynomial 
+\[-8 + 16 x - 4 x^2 - 4 x^3 + x^4 \in  \mathbb{Q}[x]\]
+Therefore, we compute as above 
+\[ \alpha ^{-1} = \frac{1}{8} (16  - 4 \alpha - 4 \alpha^2 + \alpha^3)  .\]
+
+
+
+\section{Question 2}
+\subsection{Question}
+Suppose that $K/k$ is an algebraic extension, and that $\alpha \in K$ has odd degree over $k$. Show that $k(\alpha)=k(\alpha^2).$
+\subsection{Answer}
+
+Recall that $\alpha \in K$ has odd degree over $k$ if and only if $[k(\alpha):k]$ is odd.
+\begin{proof}
+It is clear by closure that $k(\alpha^2) \subseteq k(\alpha)$. Moreover, since $\alpha \in k(\alpha)$ we have $[k(\alpha): k(\alpha^2)]=1$ or $[k(\alpha): k(\alpha^2)]=2$. Thus, by multiplicativity of extension degree, together with the fact that $[k(\alpha):k]$ is odd  $[k(\alpha): k(\alpha^2)]=1$ and $k(\alpha) \subseteq k(\alpha^2) \Rightarrow k(\alpha)=k(\alpha^2)$.
+\end{proof}
+
+\section{Question 3}
+\subsection{Question}
+Let $E = k(X)$ with $X$ transcendental over $k$. If $E/F/k$ is a proper intermediate extension, show that $E/F$ is algebraic.
+\subsection{Answer}
+\begin{proof}
+Suppose towards a contradiction that $E/F$ is transcendental. Then there are two cases. Either $F/k$ is transcendental, or it is algebraic. 
+
+If $F/k$ is transcendental, then $E/k$ has transcendence degree at least 2, a contradiction.
+
+If $F/k$ is algebraic, there is some minimal nonempty, algebraically independent  set $U$ such that $F = k(U)$, since we assumed $F$ to be a nontrivial intermediate extension.   However, $U \cup X $ is a transcendence basis for $E/k$ since, were $X$ algebraic over $U$ then it would be algebraic over $k$, and were any members of $U$ algebraic with the addition of $X$, $F/k$ would not be an algebraic extension.
+
+But, this is a contradiction, since $|U \cup X| > 1$.
+\end{proof}
+
+\section{Question 4}
+\subsection{Question}
+Let $K=\mathbb{F}_p(X,Y)$ and let $L=\mathbb{F}_p(X^{1/p}, Y^{1/p})$. What is the degree of the extension $L/K$? Show that there is no element $\alpha \in L$ for which $L=K(\alpha)$.
+\subsection{Answer}
+
+\[[L : K] = p^2\]
+\begin{proof}
+The extension $\mathbb{F}_p(X^{1/p}) / \mathbb{F}_p(X) $ has order at most $p$ since the polynomial 
+\[X^p -1 =0\]
+has root $X^{1/p}$. Furthermore, if there is some polynomial of smaller degree with root $ X^{1/p}$ then $\mathbb{F}_p(X^{1/p})$ would have size not a power of $p$ for some prime. Hence, $[\mathbb{F}_p(X^{1/p}):\mathbb{F}_p(X)] = p$. Similarly for $Y$.
+
+Therefore, since $\mathbb{F}_p(X) \neq \mathbb{F}_p (X,Y)$ \[[L : K] = p^2\] as claimed.
+\end{proof}
+
+\begin{proof}
+Assume towards a contradiction that there exists such an $\alpha$. However, $\mathbb{F}_p$ is perfect, so this implies that there exists an irreducible,  separable polynomial of degree $p^2$ over $\mathbb{F}_p$. Contradiction.
+\end{proof}
+
+\section{Question 5}
+\subsection{Question}
+Find the degree of $\mathbb{Q}\left(\sqrt{2+\sqrt 2}\right)$. Is it a normal extension?
+\subsection{Answer}
+Denote $\alpha = \sqrt{2+\sqrt 2} $.
+$\mathbb{Q}\left(\alpha\right)$ has degree 4, since its minimal polynomial is $2-4 x^2+x^4$. The extension is normal. Note that the roots of the minimal polynomial are
+\[x= -\sqrt{2-\sqrt{2}}\quad x= \sqrt{2-\sqrt{2}}\quad x= -\sqrt{2+\sqrt{2}}\quad x= \sqrt{2+\sqrt{2}}\] 
+and
+\[2/\alpha - \alpha= -\sqrt{2-\sqrt{2}}\quad \alpha -2/ \alpha= \sqrt{2-\sqrt{2}}\]\[ - \alpha = -\sqrt{2+\sqrt{2}}\quad \alpha = \sqrt{2+\sqrt{2}}.\] 
+\section{Question 6}
+\subsection{Question}
+Suppose that $K/k$ is an algebraic extension. A \emph{normal closure} of $K/k$ is an extension $L/K$ such that
+\begin{enumerate}
+\item $L/k$ is normal, and
+\item no proper subfield of $L$ that contains $K$ is normal over $k$.
+\end{enumerate}\begin{enumerate}
+\item Show that $K/k$ has a normal closure, and that any two normal closures are isomorphic.
+\item If $K/k$ is finite then any normal closure is also finite over $k$
+\item If $K/k$ is separable then so is the normal closure, and thus the normal closure is Galois over $k$.
+\item Find a normal closure of $\mathbb{Q}(\sqrt[5]{3})/\mathbb{Q}$. What is its degree over $\mathbb{Q}$?
+\end{enumerate}
+\subsection{Answer}
+\begin{enumerate}
+\item It suffices to show that there exists some field extension $E/k$ such that $E$ is normal, and $E \supseteq K$, since if there is such an extension the minimal such extension is just the intersection of all such.
+
+The field extension generated by the minimal polynomials of all $x \in K$, $x \notin k$ is such an extension, by definition.
+
+Suppose that $E, L$ are both normal closures of $K$. Then I claim that $E = k(\alpha_i)_{i \in I} = L$ where $\{\alpha_i\}$ is the set of roots to the minimial polynomials of each $k \in K$. If there is some such $k \notin E, L$ then the field is not normal. Conversely, if there an element $x \in E,L$ such that $k \notin k(\alpha_i)_{i \in I}$ then there is a proper subfield of $E,L$ satisfying the requisite properties, namely $k(\alpha_i)_{i \in I}$.
+
+
+\item If $K/k$ is finite, then $K = k(\alpha_1, \dots, \alpha_n)$ for some set of $\{\alpha_i\}$ algebraic, and the normal closure is contained within the normal field obtained by the following procedure:
+
+Compute the minimal polynomial of each $\alpha_i$ and adjoin all of its roots to $k$.
+
+Since each $\alpha_i$ is algebraic, there are only finitely many such roots for each of the finite set of $\alpha_i$. Hence, the normal closure is contained within a  finite extension and is itself finite.
+
+\item Since the minimal polynomial of each $\alpha \in K$ is separable in $K$ then the same holds true for the minimal polynomial of each $\beta \in L$, since when we construct $L$ we only add elements which have the same minimal polynomial as elements $\alpha$ already in $K$.
+
+\item The normal closure of $\mathbb{Q}(\sqrt[5]{3})/\mathbb{Q}$ is just \[\mathbb{Q}(x^5-3) = \mathbb{Q } \left( -(-3)^{1/5}, 3^{1/5}, (-1)^{2/5} 3^{1/5}, -(-1)^{3/5} 3^{1/5}, (-1)^{4/5} 3^{1/5}\right),\] an extension of degree 5 since $x^5-3$ is the minimal polynomial for $\sqrt[5]{3}$.
+\end{enumerate}
+
+\section{Question 7}
+\subsection{Question}
+Suppose that $K/k$ is an algebraic extension and that $K=k(\alpha_i)_{i \in I}$ for some elements $\alpha_i \in K$. If each $k(\alpha_i)/k$ is separable, show that $K/k$ is separable. 
+\subsection{Answer}
+We must show that every finitely generated subextension
+\[k(\alpha_1,\dots, \alpha_n)\]
+is separable over $k$. Fix some such set $\{ \alpha_1, \dots, \alpha_n\} \subset \{\alpha_i\}$ and consider the tower
+\[k \subset k(\alpha_1) \subset \cdots \subset k(\alpha_1,\alpha_2, \dots, \alpha_n).\]
+As every  $\alpha_i$ is separable over $k$, each $\alpha_i$ is separable over $k(\alpha_1, \alpha_2, \alpha_{i-1})$  for $i \geq 2$. Thus, by the tower theorem the entire field $k(\alpha_1, \alpha_2, \dots, \alpha_n)$ is separable over $k$ as desired.
+
+(Lang p. 241)
+
+\end{document}

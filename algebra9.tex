@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+
+
+
+\usepackage[all]{xy}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{amsmath}
+\pagestyle{fancyplain}
+
+\begin{document}
+
+\lhead{Frederick Robinson}
+\rhead{Math 470: Algebra}
+
+
+
+\title{Homework 9}
+\author{Frederick Robinson}
+\date{29 April 2011}
+\maketitle
+
+
+
+
+\section{Question 1}
+\subsection{Question}
+Let $A$ be a ring. Prove that the following are equivalent:
+\begin{enumerate}
+\item \label{first} If $a \in A$ and $\mathfrak{p} \in $ Spec $A$ and $a \notin \mathfrak{p}$, then there exists an idempotent $e \in A$ such that $e \notin \mathfrak{p}$ and $a$ divides $e$.
+\item \label{second} Each point of Spec $A$ has a neighborhood basis consisting of sets which are simultaneously open and closed.
+\item \label{third} Given any two distinct points $\mathfrak{p}$ and $\mathfrak{q}$ of Spec $A$, we may find a decomposition Spec $A = X \coprod Y$ with each of $X$ and $Y$ being both open and closed, $\mathfrak p \in X, \mathfrak q \in Y$.
+\item \label{fourth} Spec $A$ is Hausdorff.
+\item  \label{fifth} Spec $A$ is a totally disconnected compact Hausdorff space.
+\end{enumerate}
+[Hint: First prove the equivalence of \ref{first} and \ref{second}, and the equivalence of \ref{third}, \ref{fourth} and \ref{fifth}. Then prove that \ref{second} implies \ref{fourth}. Finally show that \ref{fifth} implies \ref{second} using the general theory of totally disconnected compact Hausdorff spaces.]
+\subsection{Answer}
+$\ref{first}  \Rightarrow \ref{second}$
+\begin{proof}
+Let $\mathfrak p \in $ Spec $A$, and let $D(I)$ be a neighborhood of $\mathfrak{p}$. There exists $a \in I, a \notin \mathfrak{p}$, as  $\mathfrak{p} \in D(I)$. Now, fix some such $a \in I$. By assumption, there exists some idempotent $e$, $a | e$. I claim that Spec $(1-e)A$ is a clopen subset of $D(I)$. $(1-e)A$ is clopen, since $(1-e)$ is idempotent, proof in class.  Let $ q \in$ Spec $ (1-e)A$, then $e \notin q \Rightarrow a \notin q$. Thus, $I \nsubseteq q \Rightarrow q \in D(I)$ as desired. 
+ \end{proof}
+ $\ref{second}  \Rightarrow \ref{first}$
+\begin{proof}
+Choose $\mathfrak{p} \in $ Spec $A$, and $a \notin \mathfrak{p}$. Then, we have $\mathfrak{p} \in D(a)$. Now, by assumption, there exists a closed and open set containing $\mathfrak{p}$ and contained in $D(a)$. This set is of the form $(1-e)A$ for some idempotent $e$ by a proof in class. Since any point not in $(1-e) A $ is in $eA$, we have $a \in q  \Rightarrow q \subseteq eA \Rightarrow e \in q$. Thus, $e \in (a)$  and $a | e $ as desired.
+\end{proof}
+$\ref{third} \Leftrightarrow \ref{fourth}$
+\begin{proof}
+Note that \ref{third} is the definition of \ref{fourth}.
+\end{proof}
+
+$\ref{fifth} \Rightarrow \ref{fourth}$
+\begin{proof} \ref{fourth} is just a weaker version of \ref{fifth} \end{proof}
+
+$\ref{fourth} \Rightarrow \ref{fifth}$
+\begin{proof}
+Specs are quasicompact, so if Spec $A$ is Hausdorff, then it is a compact Hausdorff space. Furthermore, quasicompact in a Hausdorff space $\Rightarrow$ closed, and each $D(a) \cong $ Spec $A$. Thus every open set is also closed, and Spec $A$ is totally disconnected. 
+\end{proof}
+
+$\ref{second} \Rightarrow \ref{fourth}$
+\begin{proof}
+Spec $A$ is always $T_1$, thus, we can find a neighborhood of $\mathfrak {p}$ not containing $\mathfrak {q}$. Then, by our assumption, there is a clopen neighborhood of $\mathfrak {p}$ not containing $\mathfrak{q}$. So, Spec $A$ is Hausdorff.
+\end{proof}
+
+
+\section{Question 2}
+\subsection{Question}
+Let $k$ be a finite field, and let $A = \prod _{n=1}^\infty k$. Prove that $A$ is zero-dimensional, and that for each $\mathfrak{p} \in $ Spec $A$, there is an isomorphism $k \cong \kappa(\mathfrak{p})$.
+\subsection{Answer}
+
+Prime ideals of $A$ are of the form $(k,k,\dots,k,0,k,\dots)$. If  an ideal contains any nonzero elements of a component, then it must contain all of them, as the components are fields. Furthermore, if a prime ideal contains only the zero elements o more than one $k$ component, say the first and second, we consider the product of $(0,1,1,\dots)$ and $(1,0,1,\dots)$ to show that this is not prime.
+
+We have that $A$ is zero dimensional, since for $a= (x,0,\dots) \notin (0,k,\dots) $, the element $e=(1,0,\dots)$ is idempotent, and $a$ divides $e$, since it's in a field. 
+
+Finally, the isomorphism from $\kappa(\mathfrak{p})  = A/ \mathfrak{p} $ to $k$ is given by sending an element of $A$ to its value in on one fixed place in the product corresponding to the choice of  $\mathfrak p$.
+
+\section{Question 3}
+\subsection{Question}
+Let $X$ be a topological space, and write $A  = \mathcal{C}(X,\mathbb{F}_2)$.
+\begin{enumerate}
+\item If $x \in X$, write $\mathfrak{p}_x := \{ f \in A \mid f(x) = 0\}$. Prove that $x \mapsto \mathfrak{p}_x$ is a continuous map $X \to $ Spec $A$.
+\item Prove that $X \mapsto A$ and $A \mapsto$ Spec $A$ are adjoint functors between topological spaces and Boolean rings (i.e. rings in which every element is idempotent.)
+\item Prove that the continuous map $X \to $ Spec $A$ is a homeomorphism if and only if $X$ is compact, Hausdorff, and totally disconnected.
+\end{enumerate}
+\subsection{Answer}
+\begin{enumerate}
+\item Consider an open subset $D(I) = \{ \mathfrak{p}_x \mid I \nsubseteq \mathfrak{p} \} \in $ Spec $A$. Then, a function from $I$ is not in each of the  $\mathfrak{p}_x \in D(I)$. That is, a function of $I$ takes value 1 at every $x$. So, $D(I)$ is the set of of $p_x$ for $x \in B = \{ x \mid f(x) =1, \mbox{ some }  f \in I\}$. Thus, the inverse image of $D(I)$ is just $B$, which is open, as $f^{-1}(1)$ is open for any fixed $f$, and $B$ is just the union of this quantity over each $f \in I$.
+
+\item 
+\item We saw in first part that the map is continuous. Thus, it is a homeomorphism if and only if it has continuous inverse. Fix some open $B \in X$, and consider its inverse image under the inverse map, that is $\{\mathfrak{p}_x \mid x \in B \}$. The inverse is continuous, if and only if this set corresponds to some open set in Spec $A$ for every choice of $B$. That is, if and only if $D(I) = \{ \mathfrak{p}_x \mid \mathfrak p_x \nsubseteq I \} = \{\mathfrak{p}_x \mid x \in B \}$ for any choice of $B$ open in $X$.
+
+If some $\mathfrak p _ x \in D(I)$, there is some $f \in I$ with $f(x) = 1$. Furthermore, if some $\mathfrak p _ x \notin D(I)$, then  each $f \in I$ has $f(x) = 0$. Therefore, $B = D(I) $ if and only if $I$ contains a function which takes the value 1 on all of $B$, and 0 outside of it. As all functions are assumed to be continuous, this is equivalent to demanding that all sets be both open and closed.
+
+Employing the first exercise, finishes the proof.
+\end{enumerate}
+
+
+
+\end{document}

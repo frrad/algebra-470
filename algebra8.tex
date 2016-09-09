@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+
+
+
+\usepackage[all]{xy}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{amsmath}
+\pagestyle{fancyplain}
+
+\begin{document}
+
+\lhead{Frederick Robinson}
+\rhead{Math 470: Algebra}
+
+
+
+\title{Homework 8}
+\author{Frederick Robinson}
+\date{22 April 2011}
+\maketitle
+
+
+
+
+\section{Question 1}\label{q1}
+\subsection{Question}
+\begin{enumerate}
+\item If $a, b \in A$, prove that $D(a) \cap D(b) = D(ab)$. 
+\item Prove that $a \in A^\times $ if and only if $D(a) =$Spec $A$.
+\item Prove that if $a \in A$ and $u \in A^\times$ then $D(a)= D(au)$.
+\end{enumerate}
+\subsection{Answer}
+\begin{enumerate}
+\item \label{first} If an ideal $I$ contains $a$, then clearly it also contains $ab$. Hence, $ D(ab) \subseteq D(a) $. By a similar argument, $D(ab) \subseteq D(b) \Rightarrow D(ab) \subseteq D(a) \cap D(b)$. Now let $\mathfrak{p} \in D(a) \cap D(b)$ be a prime ideal not containing $a$ or $b$.  Clearly $\mathfrak{p}$ does not contain $ab$ either, since $\mathfrak{p}$ is assumed to be prime and so by definition $\mathfrak{p} \in D(ab) \Rightarrow D(a) \cap D(b) \subseteq D(ab).$
+
+\item \label{second} Given $a \in A^\times$, any $\mathfrak(p) \ni a$ also contains 1, and therefore $A = \mathfrak{p}$, but this can't be, as $\mathfrak{p}$ is assumed to be proper.
+
+Conversely, suppose that $D(a) = $ Spec$A$. Then, $a$ is contained in no prime ideal. In particular then $a$ is contained in no maximal ideal. Hence, $a$ generates the entire ring. Thus, it has an inverse. 
+
+\item It follows from parts \ref{first} and \ref{second} that $D(au) = D(a) \cap D(u) = D(a) \cap $ Spec$A = D(a)$ as desired.
+\end{enumerate}
+
+\section{Question 2}\label{exx}
+\subsection{Question}
+If $I$ is an ideal of $A$, define rad$(I) := \{a\in A \mid a^n \in I$ for some $n \geq 1\}$.
+\begin{enumerate}
+\item Prove that rad$(I)$ is the preimage of nil$(A / I)$ under the surjection $A \to A/I$.
+\item \label{earlier} Prove that rad$(I) = \bigcap_{\mathfrak{p} \supset I}\mathfrak{p}$ where (as indicated) the intersection is taken over the set of all prime ideals containing $\mathfrak{p}$.
+\end{enumerate}
+\subsection{Answer}
+\begin{enumerate}
+\item Suppose $x \in $nil$(A/ I)$. Then, for some $n \geq 1, (x+I)^n = I \Rightarrow x^n \in I$   as desired.  For the reverse inclusion, let $a \in $ rad$(I)$. Thus, $a^n \in I$, and $f(a)^n = f(a^n) = 0$, so $f(a) \in $ nil$(A/I)$ as desired.
+\item By the previous part this is equivalent to showing that
+\[f^{-1}(\mbox{nil}(A/I)) = \bigcap_{\mathfrak{p} \supset I} \mathfrak{p}\]
+but
+\begin{align*}
+f^{-1}(\mbox{nil}(A/I)) &= f^{-1} (  \bigcap_{\mathfrak{p} \subset A/I} \mathfrak{p} ) \\
+&= \bigcap_{\mathfrak{p} \subset A/I} f^{-1}(\mathfrak{p} ) \\
+&= \bigcap_{ \mathfrak{p} \supset I}\mathfrak{p}  
+\end{align*}
+\end{enumerate}
+as desired.
+
+\section{Question 3}
+\subsection{Question}
+If $a, b \in A$, prove that the following are equivalent:
+\begin{enumerate}
+\item \label{one} $D(b) \subset D(a)$
+\item \label{two} $b^n \in aA$ for some $n \geq 1$
+\item \label{three} The natural map $A \to A_b$ factors through the natural map $A \to A_a$.
+\end{enumerate}
+[Some hints: for $(\ref{one}) \Rightarrow (\ref{two})$, consider the statement on complements, and use exercise \ref{exx} part \ref{earlier}. To see that $(\ref{two}) \Rightarrow (\ref{three})$, recall that the natural map $A \to A_a$ is initial among all maps $A \to B$ in which $a$ becomes invertible. To see that $(\ref{three}) \Rightarrow (\ref{one})$, recall that the image of Spec $A_a$ in Spec $A$ under the natural map is $D(a)$ (and similarly with $b$ in place of $a$).]
+\subsection{Answer}
+First we'll show $\ref{one} \Rightarrow \ref{two}$
+\begin{proof}
+Suppose $D(b) \subset D(a)$. Then, $V(a) \subset V(b)$, or equivalently, $\{ \mathfrak{p} \mid a \in \mathfrak{p}\} \subset \{ \mathfrak{p} \mid b \in \mathfrak{p} \}$. Thus, by exercise \ref{exx} part \ref{earlier} rad$(bA) \subset$ rad$(aA)$. As $b$ is in rad$(bA)$ trivially, it is also in rad$(aA)$. But this is what we wanted to show.
+\end{proof}
+
+Now we'll show $\ref{two} \Rightarrow \ref{three}$
+\begin{proof}
+By the hint it suffices to show that \ref{two} implies that $a$ has inverse in  $A_b=A[x]/(bx-1)$. Fix $n$ such that $b^n \in aA$. So, $b^n = a y $ for some $y \in A$. Hence, $b^nx^n = 1 = a y x^n$ and $a$ has inverse in $A_b$ as claimed.
+\end{proof}
+
+Finally, $\ref{three} \Rightarrow \ref{two}$
+\begin{proof}
+Recall from class that the natural map $A \to A_p$ induces a map of spectrums, Spec $A_p \stackrel{f^{-1}}{\to} $ Spec $A$ with image $D(p)$. So, assume that $f: A \to A_b$ factors as the composition of $g:A \to A_a$ and $h: A_a \to A_b$. Then, $f^{-1} (A_b) = D(b) = g^{-1} \circ h^{-1} (A_b)$. Since $h^{-1}(A_b) \subseteq A_a$, we have $g^{-1} \circ h^{-1} (A_b) \subseteq h^{-1}(A_a)$. That is $D(b) \subseteq D(a)$, as desired.
+\end{proof}
+
+\section{Question 4}
+\subsection{Question}
+Let $a \in A $, write $A_a := A[x]/(ax -1 )$, and let $f: A \to A_a$ the natural map, inducing a map $f^{-1} : $ Spec $A_a \to $Spec $A$. In class we proved that $f^{-1}$ induces a bijection between Spec $A_a$ and $D(a)$. The goal of this exercise is to carefully prove that this bijection is a homeomorphism (when $D(a)$ is equipped with the topology induced from that of Spec $A$).
+\begin{enumerate}
+\item If $b \in A_a$, show that $a^n b= f(a')$ for some $a' \in a A$.
+\item \label{previous} Prove that the bijection Spec $A_a \to D(a)$ induced by $f^{-1}$ restrcts to a bijection between $D(b)$ (which is a subset of Spec $A_a$) and $D(a')$ (which is a subset of Spec $A$). [Hint: We showed in class that for any $f: A \to B$, and any $a \in A$, the preimage of $D(a)$ under $f^{-1}$ is $D(f(a))$. Apply this with $a$ replaced by $a'$. Then use the result of exercise 1 to show that $D(a') \subset D(a)$ and that $D(f(a'))=D(b).$]
+\item Using (\ref{previous}), conclude that $f^{-1}$ induces a homeomorphism between Spec $A_a$ and $D(a)$.
+\end{enumerate}
+\subsection{Answer}
+\begin{enumerate}
+\item Fix some $b \in A_a$. We can write $b$ as a polynomial in $x$ with coefficients  $b_i \in A$: $b = \sum_{i=0}^n b_i x^i$. Now, multiplying through by $a^{n+1}$ we just get $a^{n+1} b = \sum_{i=0}^n b_i a^{n-i+1}$. Seen as a member of $aA$, this is precisely the desired $a'$.
+\item Choosing $a^n b = f(a')$ as above, we have by a proof in class, $(f^{-1})^{-1}D(a') = D(f(a')) = D ( a^n b)$, and by question \ref{q1}, $D(a^nb) = D(b)$, since $a^n$ is a unit in $A_a$. Since this is a restriction of a bijection, it is itself a bijection.
+\item The previous part demonstrates that $f^{-1}$ restricts to a bijection between an open basis for Spec $A_a$, and $D(a)$. Thus, it is continuous with continuous inverse.
+\end{enumerate}
+
+
+\section*{Question 4*}
+\subsection*{Question}
+Keeping the notation of exercise 2, try to write a proof that Spec $A_a \to D(a)$ is a homeomorphism using closed sets rather than distinguished open sets.
+\subsection*{Answer}
+
+\section{Question 5}
+\subsection{Question}
+\begin{enumerate}
+\item Prove that if $U \subset V$ is an inclusion of open subsets of Spec $A$, and  if $f \in \mathcal{O}(U)$, then $f|_V$ (the restriction of $f$ to $V$) is an element of $\mathcal{O}(V)$. [Hint: Exercise 3 may be helpful.]
+\item Prove that if $U_{i_i \in I}$ is any open cover of Spec $A$, and that if $f_i \in \mathcal{O}(U_i)$ are such that $f_i$ and $f_j$ coincide on $U_i \cap U_j$ for all $i,j \in I$, then the function $f$ defined on $\bigcup_i U_i$ via
+\[f(\mathfrak{p} ) = f_i(\mathfrak{p}) \mbox{ if } \mathfrak{p}  \in U_i\]
+is well-defined, and is an element of $\mathcal{O}(\bigcup{U_i})$.
+
+[These are the \emph{sheaf properties} of $\mathcal{O}$.]
+\end{enumerate}
+\subsection{Answer}
+\begin{enumerate}
+\item There exists $a \in A$, $D(a) \subseteq U$ such that $f|_{D(a)}$ is given $x \in A_a$. Given a $b$ with $D(b) \subseteq V$, $D(b) \subseteq D(a)$ we would like an element  $ y \in A_b$ with $f|_{D(b)} $ given by $y$. If we write $x$ and $y$ as polynomials in $1/a$ and $1/b$, and sum by matching denominators we have $x = x' / a^n, y = y' / b^m$. By exercise 3, we can put $b^l = a c $ for some $c \in A$. Hence, $x'/ a^n = x' c^n / a^n c^n = x' c^n / b^{n l}$. So, $y' =  x' c^n$, $m = nl$ is just what we wanted to demonstrate.
+\item For some $p \in U_i, U_j$ we have $f(p) = f_i(p) , f_j(p)$, but these two values coincide by assumption, so it is well defined.
+
+Moreover, $f \in \mathcal{O}$, as given $p \in U$ there is some $U_i$ with $p \in U_i$. Hence there exists $a \in A$ with $D(a) \subseteq U_i$ and $f_i|_{D(a)}$ is given by $x \in A_a$. But since $f = f_i$, this same element gives $f|_{D(a)}$, and $f \in \mathcal{O}(U)$. 
+\end{enumerate}
+
+
+\end{document}

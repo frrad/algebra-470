@@ -1,0 +1,270 @@
+\documentclass[11pt]{article}
+
+
+
+\usepackage[all]{xy}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+\pagestyle{fancyplain}
+
+\begin{document}
+
+\lhead{Frederick Robinson}
+\rhead{Math 470: Algebra}
+
+
+
+\title{Homework 4}
+\author{Frederick Robinson}
+\date{27 January 2011}
+\maketitle
+
+
+
+
+\section{Question 1}
+\subsection{Question}
+Let $A$ be a commutative ring and let $M$ and $N$ be $A$-modules. Prove that $M \otimes_A N$  and $N \otimes_A M$ are (naturally) isomorphic. 
+\subsection{Answer}
+
+
+Recall that $M \times N$ and $N \times M$ are isomorphic as $A$-modules say via $\varphi: N \times M \to M \times N$. By definition, the tensor product $M \otimes N$, is an abelian group, together with a bilinear map $\otimes: M \times N \to M \otimes N$ such that, for every abelian group $Z$, and bilinear map $f$, there exists unique $\bar{f}$ such that the diagram commutes. I claim that the same group $ M \otimes N$ together with the bilinear map $\varphi^{-1} \circ \otimes$ is the tensor product $N \otimes M$. This is equivalent to saying that $M \otimes N \cong N \otimes M$.
+\[
+\xymatrix{
+N \times M \ar[rrd]_g \ar@/_/[r]^{\varphi^{-1}} & M \times N \ar@/_/[l]_\varphi  \ar[r]^\otimes \ar[dr]^f& M \otimes N \ar@{.>}[d]^{\bar{f}}\\
+&& Z}
+\]
+\begin{proof}
+Let $Z$ an abelian group, with $g: N \times M \to Z$ bilinear. Then defining $f = g \circ \varphi$, there exists a unique $\bar{f}$ which makes the diagram commute. By definition of isomorphism, this is also the unique map which makes $g = \bar{f} \circ (\varphi^{-1} \circ \otimes)$.
+\end{proof}
+\section{Question 2}
+\subsection{Question}
+Prove that $M \otimes (N \oplus P )  \cong M \otimes N \oplus M \otimes P$.
+\subsection{Answer}
+We follow the exposition in Dummit and Foote p373.
+\begin{proof}
+
+Define a map $\varphi: M \times ( N \oplus P) \to ( M \otimes N) \oplus(M \otimes P)$ by $(m,(n,p)) \mapsto (m \otimes n, m \otimes p)$. This is well defined, as we just treat $n,p$ as members of $N \oplus P$ after inclusion. We can easily check bilinearity:
+
+\[ \varphi (a_1 m_1 + a_2 m_2 , (n, p)) = ((a_1 m_1 + a_2 m_2 )  \otimes  n, (a_1 m_1 + a_2 m_2 )  \otimes  p)\]
+\[  = ((a_1 m_1 )  \otimes  n, (a_1 m_1 )  \otimes  p) + ((a_2 m_2 )  \otimes  n, (a_2 m_2 )  \otimes  p) \]
+\[= a_1 (m_1  \otimes  n, m_1  \otimes  p) + a_2 (m_2  \otimes  n, m_2  \otimes  p)\]
+\[  = a_1  \varphi (m_1 , (n, p)) + a_2  \varphi (m_2 , (n, p))\]
+
+ also we check
+ \[  \varphi (m, a_1 (n_1 , p_1 ) +a_2 (n_2 , p_2 )) \]\[= (m 
+ \otimes (a_1 n1 +a_2 n2 ), m \otimes (a_1 p1 +a_2 p_2 ))\]
+ \[ = (m \otimes a_1 n_1 , m \otimes  
+a_1 p_1 ) + (m \times a_2 n_2 , m  \otimes  a_2 p_2 )\]
+\[ = (a_1 m  \otimes  n_1 , a_1 m  \otimes  p_1 ) + (a_1 m  \otimes  n_2 , a_2 m  \otimes  p_2 ) \]
+\[= a_1  \varphi (m, (n_1 , p_1 )) + a_2  \varphi (m, (n_2 , p_2 )).\]
+
+Since $\varphi $ is bilinear it induces a homomorphism of $A$-modules $X: M \otimes (N \oplus P) \to ( M \otimes N) \oplus (M \otimes P)$.
+
+Now we go the other way. Consider maps $f: M \times N \to M \otimes (N \oplus P)$ and $g: M \times P \to M \otimes (N \oplus P)$ defined as $f: (m,n ) \mapsto m \otimes (n,0)$ and $g: (m,p) \mapsto m \otimes (0,p)$. These are both bilinear, and hence induce maps $G: M \otimes N \to M \otimes (N \oplus P)$ and $( M \otimes P) \to M \otimes (N \oplus P)$. By the definition of direct sum,  $F$ and $G$ together induce yet another map $Y: (M \otimes N) \oplus (M \otimes P) \to M \otimes (N \oplus P) $ which takes $Y((m_1 \otimes n, m_2 \otimes p)) = m_1 \otimes (n,0)+ m_2 \otimes (0,p)$. Therefore, $X \circ Y = Y \circ X=1$, and we have proven the claimed isomorphism.
+\end{proof}
+\section{Question 3}
+\subsection{Question}
+Prove that $A^m \otimes A^n \cong A^{mn}$.
+\subsection{Answer}
+\begin{proof}
+We use induction on $n$. By the first, and next questions we have $ A \otimes_A A^m \cong A^m \cong A^m \otimes_A A. $ So, suppose (induction) that $A^m \otimes_A A^{n-1} \cong A^{m(n-1)}$. By the second exercise we conclude that $A^m \otimes_A A^n \cong A^m \otimes_A (A^{n-1} \oplus A) \cong (A^m \otimes_A A^{n-1}) \oplus (A^m \otimes_A A) \cong A^{m(n-1)}\oplus A^m \cong A^{mn}$.
+\end{proof}
+
+
+\section{Question 4}
+\subsection{Question}
+Prove that $A \otimes_A M \cong M$.
+\subsection{Answer}
+Recall that the tensor product is just the object, map $\otimes$ that is universal for the following diagram
+\[
+\xymatrix{
+A \times M \ar[r]^\otimes \ar[dr]^f & A \otimes M  \ar@{.>}[d]^{\bar{f}} \\
+  & Z  \\
+}
+\]
+for $f$ a bilinear map, $Z$ an arbitrary abelian group. However, It is easy to see that this is just $M$. By bilinearity $(a, m) = (a \cdot 1 , m ) = (1, am)$, so, setting $A \otimes M = M$ there clearly exists an arrow $\bar{f}$ that makes the diagram commute. Moreover, $\bar{f}$ must also be unique, since were it not then there would exist $\bar{f} \neq \bar{g}$ which make the diagram commute. However, we can produce $f \neq g$ maps from $A \times M \to Z$ from these, a contradiction.
+
+\section{Question 5}
+\subsection{Question}
+Prove that if $I$ is an ideal of $A$, then $(A/I) \otimes_A M \cong M/IM$.
+\subsection{Answer}
+\begin{proof}
+Define a map $\varphi: M \to ( A /I) \oplus_A M$ defined as $\varphi: m \mapsto 1 \otimes m$.  $IM \subseteq Ker(\varphi)$ since $\varphi(a m) = 1 \oplus a m = a \otimes m = 0 \otimes m =0$. Hence, $\varphi$ induces a homomorphism $X: M /IM \to (A/I) \otimes M$.  This homomorphism is surjective by properties of homomorphism, the fact that $1 \otimes m $ generates $(A/I) \otimes_A M$.
+
+Now, let $\psi: (A / I) \times M \to M / I M $  be $\psi: (a ( mod I ),m) \mapsto am (mod IM)$. Being bilinear, this induces a group homomorphism $Y: (A/I) \otimes M \to M/IM$ which sends $a (mdo I) \otimes m \mapsto am (mod IM).$  $Y \circ X =1 $ with $X$ a bijection. Hence, we have the desired isomorphism.
+\end{proof}
+
+
+\section{Question 6}
+\subsection{Question}
+Write out a ``bare hands'' proof that if $M \to^\psi N \to P \to^\phi 0$ is exact, then so is $M \otimes_A Q \to^{1 \otimes \psi} N \otimes_AQ \to^{1 \otimes \phi} P \otimes_A Q \to 0$ for any $A$-module $Q$.
+\subsection{Answer}
+We follow the proof from Dummit and Foote p399.
+\begin{proof}
+Let the first sequence be exact. The map $\phi \otimes 1$ is surjective since $p \otimes q = \phi(n) \otimes q$ for all simple tensors, by surjectivity of $\phi$. Now, take a general tensor $\sum m _i \otimes q_i$. We have $(\phi \otimes1) \circ ( \psi \otimes 1)(\sum m_i \otimes q_i) = \sum \phi \circ \psi(m_i) \otimes q_i = \sum 0 \otimes q_i=0$. Hence, $Im ( \psi \otimes 1) \subseteq Ker(\phi \otimes 1)$. Therefore, there exists a projection $\pi: (N \otimes_A Q ) / Im(\psi \otimes 1) \to P \otimes_A Q$.
+
+Now define $\gamma: P \times Q \to ( N \otimes_A Q )/Im(\psi \otimes 1)$ by $\gamma((p,q))=n \otimes q$ for $n \in N$ with $\phi(n) =p$. This map being bilinear it induces a homomorphism $\Gamma: P \otimes_A Q \to (N \otimes_A Q) / Im(\psi \otimes 1)$ by $\Gamma(p \otimes q) = n \otimes q$. Now $\Gamma \circ \pi(n \otimes q) = \Gamma(\phi (n) \otimes q) = n \otimes q$ so it is the identity. Since $\pi \circ \Gamma $ is also the identity we have $Im(\psi \otimes 1) = Ker(\phi \otimes 1)$.
+\end{proof}
+\section{Question 7}
+\subsection{Question}Prove that a short exact sequence $0 \to M \to N \to P \to0$ for $A$-modules is split if and only if the sequence exhibits an isomorphism $N \cong M \oplus P$; that is, if and only if there is a commutative diagram
+\[
+\xymatrix{
+0 \ar[r]  & M\ar[r]\ar[d] & N\ar[r]\ar[d] & P\ar[r]\ar[d] & 0\\
+0 \ar[r]& M \ar[r]& M \oplus P\ar[r] & P\ar[r] & 0\\
+}
+\]
+where the left and right downward arrows are the identity maps, and the maps on the bottom line are the obvious inclusion and projection.
+\subsection{Answer}
+First we will show ($\Leftarrow$) that if the short exact sequence is split, then there exists such a commutative diagram. 
+\begin{proof}
+By the definition of projective and injective modules there exist additional maps such that the following diagram commutes.
+\[
+\xymatrix{
+0\ar[d] \ar[r]  & M\ar[r]\ar[d] & M \oplus P \ar[r]  \ar[dl]& P\ar[r]\ar[d] \ar[dl]& 0 \ar[d]\\
+ 0\ar[r]& M \ar[r]& N \ar[ul] \ar[r] & P \ar[ul] \ar[r] &0 \\
+}
+\]
+or equivalently
+\[
+\xymatrix{
+0\ar[r]  & M\ar[r] \ar@/_/[dr] & M \oplus P \ar@{.>}[d]_g \ar@/_/[l] \ar[r] & P \ar@/_/[l] \ar[r] \ar[dl]& 0 \\
+& & N \ar[ul]   \ar@/_/[ur]& & \\
+}
+\]
+Thus, by definition of the coproduct there exists a unique map $g$ (above), such that the diagram commutes. Applying the five lemma, we see that this homomorphism is in fact an isomorphism, as desired.
+\end{proof}
+Conversely ($\Rightarrow$), suppose that such an isomorphism of short exact sequences exists. We will demonstrate that it splits
+\begin{proof}
+So $0 \to M \to N\to P \to 0$. Let's call the map $p: N \to P$. Then, if we call the isomorphism $\varphi: N \to M \oplus P$, and the inclusion map $i : P \to M \oplus P$ we have a map from $P$ to $ N$ such that its composition with $p$ is the identity, namely $\varphi^{-1} \circ i $.
+\[
+\xymatrix{
+ M \oplus P \ar[r]  & P\ar[d]_\cong \ar@/_/[l]_i  \\
+ N \ar[u]_\varphi \ar[r]_p & P  \\
+}
+\]
+\end{proof}
+\section{Question 8}
+\subsection{Question}
+Prove the uniqueness assertion in the structure theorem for finitely generated modules over a PID.
+\subsection{Answer}
+We follow the proof of Dummit and Foote p466.
+
+Throughout, let $R$ be a PID and $p$ a prime in $R$. $F$ is a the field $R/(p)$.
+
+Now, by way of a lemma we show that $M=R^r \Rightarrow M/pM \cong F^r$.
+
+\begin{proof}
+There is a map from $R^r$ to $(R/(p))^r$ defined by modding out by $(p)$. This is a surjective homomorphism of $R$-modules whose kernel is just those elements all of whose coordinates are in $(p)$. Since these elements are just $pR^r$  we have $R^r / pR^r \cong (R/(p))^r$ as claimed.
+\end{proof}
+
+As a second lemma I claim that if $M = R / (a_1) \oplus R/(a_2) \oplus \cdots \oplus R / (a_k)$ for each $a_i$ divisible by $p$ then $M/pM \cong F^k.$
+
+\begin{proof}
+First we will show that if $M = R / (a)$ where $a$ is a nonzero element of $R$ then 
+\[M / p M \cong \left\{ \begin{array}{ll} F & \mbox{if $p$ divides $a$ in $R$}\\0 & \mbox{if $p$ does not divide $a$ in $R$.}\end{array} \right.\]
+The claim follows from this proposition, as well as the existence part of the structure theorem.
+
+The above claim follows form the isomorphism theorems. Note first that $p(R/(a))$ is the image of the ideal $(p)$ in the quotient $R/(a)$, hence is $(p)+(a)/(a)$. The idea $(p)+(a)$ is generated by a greatest common divisor of $p$ and $a$, hence is $(p)$ if $p$ divides $a$ and is $R=(1)$ otherwise. Hence $pM =(p)/(a)$ if $p$ divides $a$ and is $R/(a)=M$ otherwise. If $p$ divides $a$ then $M/pM-(R/(a))/((p)/(a)) \cong R/(p)$, and if $p$ does not divide $a$ then $M/pM=M/M=0$.
+\end{proof}
+
+Now we will show that two finitely generated $R$-modules $M$ and $L$ are isomorphic if and only if they have the same list of invariant factors. 
+
+The forward ($\Rightarrow$) direction of this proof is clear. 
+
+So, suppose $M$ and $L$ are isomorphic. We will show that they have the same free rank and list of invariant factors.
+\begin{proof}
+Any isomorphism between $M$ and $L$ must map the torsion in one to the torsion in the other. So, Tor$(L) \cong$Tor$(M)$. So, $R^m \cong M/$Tor$(M) \cong L/$Tor$(L) \cong R^l$. Where $m$ is the free rank of $M$ and $l$ of $L$. Let $p$ be any nonzero prime from $R$. Then, as $R^ m \cong R^l$ we have an isomorphism $R^m / p R^m \cong R^l / p R^l$. By the lemma this implies that $F^m \cong F^l$ where $F$ is the field $R/pR$. Hence we have an isomorphism of an $m$-dimensional vector space over $F$ with an $l$ dimensional vector space over $F$, so that $m =l$ and $M$ and $L$ have the same free rank.
+
+Now it remains only to show that $M$ and $L$ have the same lists of invariant factors. We need only work with the isomorphic torsion modules, so assume that both $M$ and $L$ are torsion $R$-modules.
+
+First we'll demonstrate the they have the same elementary divisors. However, it suffices to show that for any prime $p$ the elementary divisors which are a power of $p$ are the same for both modules. If $L \cong M$ then the direct sum of the cclic factors whose elementary divisors are a power of $p$ in $L$ is isomorphic to the same direct sum in $M$.
+
+We use induction on the power of $p$ in the annihilator of $L$. If this power is $0$, then both $L$ and $M$ are $0$ and we are done. Otherwise $L$ (and by the isomorphism $M$) have nontrivial elementary divisors. Suppose the elementary divisors of $L$ are given by
+\[\underbrace{p,p,\dots,p}_{m times}, p^{\alpha_1}, p^{\alpha_2}, \dots, p^{\alpha_t}\]
+where $2 \leq \alpha_1 \leq \alpha_2 \leq \dots \leq \alpha_s$. $L$ is the direct sum of cyclic modules with generators $x_1, x_2, \dots , x_m, x_{m+1}, \dots, x_{m+s} $, say, whose annihilators are $(p), (p), \dots, (p), (p^{\alpha_1}), \dots, (p^{\alpha_s})$, respectively. Then the submodules $pM_1$ has elementary divisors
+\[p^{\alpha_1-1}, p^{\alpha_2-1}, \dots, p^{\alpha_s-1}\]
+since $pL$ is the direct sum of the cyclic modules with generators $px_1, px_2, \dots, px_m, px_{m+1}, \dots, px_{m+s}$ whose annihilators are $(1), (1), \dots, (1), (p^{\alpha_1-1}),\dots,(p^{\alpha_s-1})$, respectively. Similarly if the elementary divisors of $M$ are given by 
+\[\underbrace{p,p,\dots,p}_{n times}, p^{\beta_1},p^{\beta_2}, \dots, p^{\beta_t}\]
+where $2 \leq \beta_1\leq \beta_2 \leq \dots \leq \beta_t$, then $pM$ has elementary divisors
+\[p^{\beta_1-1},p^{\beta_2-1}, \dots, p^{\beta_t-1}\]
+Since $M \cong L$, also $pL \cong p M$ and the power of $p$ in the annihilator of $pL$ is one less than the power of $p$ in the annihilator of $M$. By induction, the elementary divisors for $pL$ are the same as the elementary divisors for $pM$, i.e., $s=t$ and $\alpha_1 -1 = \beta_i-1$ for $i = 1,2, \dots, s$, hence $\alpha_i = \beta_i$ for $i=1,2,\dots, s$. Finally since also $L/pL \cong M /pM$ we see from the second lemma that $F^{m+s} \cong F^{n+t}$, which shows that $m+s = n+t$ hence $m=n$ since we have already seen $s=t$. 
+\end{proof}
+\section{Question 9}
+\subsection{Question}
+Complete the sketch proof of the existence of Jordan normal form.
+\subsection{Answer}
+
+Let $T$ be a linear transformation on a finite dimensional vector space $V$ over the field $F$, with minimal polynomial of $T$ splitting completely over $F$. I claim that $T$ can be put in Jordan normal form.
+\begin{proof}
+
+$x$ acts on $v \in V$ by $x\cdot v = Tv$. For any $p(x) = a_n x^n + a_{n-1} x^{n-1}+ ... + a_1 x + a_0 \in F[x]$, we define the action of $p(x)$ on $v \in V$ by $p(x)v = (a_n T^n + a_{n-1}T^{n-1}+ ... + a_1 T +a_0)(v) = a_n T^n (v) + a_{n-1}T^{n-1} (v)+ ... + a_1 T (v)+ a_0 v$. This action makes $V$ into an $F[x]$ module. 
+
+As $V$ is a finite dimensional vector space over $F$, it is finitely generated as an $F[x]$-module. Since free modules over $F[x]$ have infinite dimension the $F[x]$ module is torsion. By the structure theorem for finitely generated modules over a PID, $V \cong F[x]/a_1 (x) \oplus F[x]/ a_2 (x) \oplus \dots \oplus F[x]/a_m (x)$ where $a_m(x)$ is the minimal polynomial for $T$. 
+
+By assumption, the minimal polynomial of $T$ splits completely in $F$, so $V$ is the direct sum of finitely many $F[x]$-module of the form $F[x]/(x-\gamma)^q$ for some $\gamma \in F$ and $q \geq 1$. Now consider the elements $(x-\gamma)^{q-1}, (x-\gamma)^{q-2}, ... ,(x-\gamma), 1 \in F[x]/(x-\gamma)^q$. This set of elements is a basis for $F[x]/(x-\gamma)^q$ as a $F$ vector space. 
+
+\end{proof}
+
+\section{Question 10}
+\subsection{Question}
+Give examples of matrices $M$ over $\mathbb{Q}$ whose characteristic polynomial and minimal polynomial are respectively:
+\begin{enumerate}
+\item $(X-1)^5$ and $(X-1)^4$.
+\item $(X-1)^2(X-2)^3$ and $(X-1)(X-2)$.
+\item $(X-1)^2(X-2)^3$ and $(X-1)(X-2)^2$.
+\item $(X-1)^2(X-2)^3$ and $(X-1)(X-2)^3$.
+\end{enumerate}
+\subsection{Answer}
+We exploit our knowledge of Jordan Canonical form to find the following matrices (Jordan Blocks highlighted).
+\begin{enumerate}
+\item \[\left(
+\begin{array}{cccc|c}
+ 1 & 1 &  &  &  \\
+  & 1 & 1 &  &  \\
+  &  & 1 & 1 &  \\
+  &  &  & 1 &  \\
+ \hline
+  &  &  &  & 1
+\end{array}
+\right)\]
+\item \[\left(
+\begin{array}{c|c|c|c|c}
+ 1 &  &  &  &  \\
+ \hline
+  & 1 &  &  &  \\
+ \hline
+  &  & 2 &  &  \\
+ \hline
+  &  &  & 2 &  \\
+ \hline
+  &  &  &  & 2
+\end{array}
+\right)\]
+\item \[\left(
+\begin{array}{c|c|cc|c}
+ 1 &  &  &  &  \\
+ \hline
+  & 1 &  &  &  \\
+ \hline
+  &  & 2 & 1 &  \\
+  &  &  & 2 &  \\
+ \hline
+  &  &  &  & 2
+\end{array}
+\right)\]
+\item \[\left(
+\begin{array}{cc|ccc}
+ 1 &  &  &  &  \\
+  & 1 &  &  &  \\
+ \hline
+  &  & 2 & 1 &  \\
+  &  &  & 2 & 1 \\
+  &  &  &  & 2
+\end{array}
+\right)\]
+\end{enumerate}
+
+\end{document}

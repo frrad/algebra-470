@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+
+
+
+\usepackage[all]{xy}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{setspace}
+\usepackage{amsmath}
+\pagestyle{fancyplain}
+
+
+\begin{document}
+
+\title{}
+\author{Frederick Robinson}
+\date{13 May 2011}
+\maketitle
+
+\section*{Question}Prove that Spec $(A_1 \times A_2) = $ Spec $A_1 \coprod $ Spec $A_2$, and if Spec $A = X \coprod Y$, then $A = B \times C$ with $X =$ Spec $B, Y=$ Spec $C$.
+\section*{Answer}
+\begin{proof}
+If $\mathfrak{p} \in A_1 \times A_2$ is a prime ideal, it is of the form  $a_1 \times a_2$ for $a_i \in $ Spec $A_i$  or $A_i$, as $\pi_i( \mathfrak{p}) \subset A_i $ must be prime or $A_i$. 
+In fact, precisely one of the $a_i$ must be $A_i$, as for $(a,b) \in \mathfrak{p}$ we have $(a,b)=(a,1)(1,b)$. If $(a,1) \in \mathfrak{p}$, then $a_2 = A_2$, otherwise, $a_1 = A_1$. Finally, observe that $\mathfrak{p} \times A_2$ is a prime ideal for all prime $\mathfrak{p } \in A_1$, as if $(a_1, a_2)(a_3,a_4) \in \mathfrak{p} \times A_2$ either $a_1$ or $a_3$ is in $\mathfrak{p}$ by primeness of $\mathfrak{p}$. As both $a_2$, and $a_4$ are in $A_2$, this is sufficient for on of $(a_1,a_2), (a_3,a_4)$ to be in $\mathfrak{p} \times A_2$.
+
+
+The set $X = \{ (\mathfrak{p} , A_2) \mid \mathfrak{p} \in $ Spec $A_1 \}$ is both closed and open, since $V((0, A_2)) = X = D((A_1 , 0))$. Similarly, for $Y =  \{ ( A_1, \mathfrak{p} \mid \mathfrak{p} \in $ Spec $A_2 \}$ we have $V( (A_a , 0) )= X = D((0 , A_2))$. Thus, Spec $(A_1 \times A_2) = X \coprod Y$. 
+
+Finally, we verify that $A_1 \cong X$ via $\mathfrak{p } \mapsto (\mathfrak{p} , A_2)$. This is a bijection by our identification of the prime ideals of $A_1 \times A_2$ above. Furthermore, it is continuous, with continuous inverse, since a closed set $V(\mathfrak{p}) \in A_1$ corresponds to the closed set $V((\mathfrak{p}, A_2)) \in A_1 \times A_2$. Similarly, $A_2 \cong Y$ via $\mathfrak{p} \mapsto (A_1, \mathfrak{p})$.
+\end{proof}
+
+\begin{proof}
+For the opposite direction, assume Spec $A = X \coprod Y$. Thus, there exist $I,J$ such that $V(I) = X, V(J) =Y$. Now observe that $I+J$ is the entire ring. Were it not, it would be contained in some maximal (and therefore prime) ideal,  but $V(I) \cap V(J) = \emptyset$. Therefore, the Chinese Remainder Theorem applies, so $IJ = I \cap J$, and $f: A/ IJ  \to A / I \times A/J$ defined by $f(x+ IJ) = (x+ I , x+J)$ is an isomorphism.
+
+Since $IJ  = I \cap J \subseteq \mathfrak{p}$ for all $\mathfrak{p}$ prime $IJ \in $ nil $A$, and every $x \in IJ$ is nilpotent. Hence, Spec $A \cong$ Spec $A/IJ \cong$ Spec $(A/I \times A/J)$.
+\end{proof}
+
+\section*{Question}
+Prove that the Zariski topology is a topology on Spec $A$.
+\section*{Answer}
+We must verify (i) that sets of the form $V(X)$ cover Spec $A$, (ii) $0, $ Spec $A = V(X)$ for some $X$ (iii)$\{V(X) \mid X \in A\}$ is closed under finite union,  arbitrary intersection. 
+
+Each prime ideal $\mathfrak{p}$ is contained in at least the set $V(\mathfrak{p})$ by definition.
+
+$0 = V(A) , $ Spec $A = V( 0).$
+
+$V(\mathfrak{p} ) \cup V(\mathfrak{q}) = \{ a \in $ Spec $A \mid \mathfrak{p} \subseteq a\} \cup  \{ a \in $ Spec $A \mid \mathfrak{q} \subseteq a\} =  \{ a \in $ Spec $A \mid \mathfrak{p} + \mathfrak{q} \subseteq a\} = V(\mathfrak{p} + \mathfrak{q})$. But the set of ideals is closed under this addition operation.
+
+Furthermore, $\bigcap_{i \in I}V(J_i) = \bigcup_{i \in I} \{ \mathfrak{p} \in $ Spec $A \mid J_i \subseteq \mathfrak{p}\}  =  \{ \mathfrak{p} \in $ Spec $A \mid \bigcap_{i \in I} J_i \subseteq \mathfrak{p} \}  = V(\bigcap_{i \in I} J_i)$.
+\end{document} 
